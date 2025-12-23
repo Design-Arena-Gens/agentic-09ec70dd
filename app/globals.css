@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 30, 41, 59;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom right,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
+}
+
+.glow-blue {
+  box-shadow: 0 0 40px rgba(24, 119, 242, 0.3);
+}
+
+.glow-green {
+  box-shadow: 0 0 40px rgba(22, 91, 51, 0.4);
+}
+
+.glow-gold {
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
+.christmas-gradient {
+  background: linear-gradient(135deg, #C41E3A 0%, #165B33 100%);
+}
+
+.meta-gradient {
+  background: linear-gradient(135deg, #1877F2 0%, #0C5BBD 100%);
+}
+
+.winner-badge {
+  @apply bg-gradient-to-r from-yellow-400 to-yellow-600 text-slate-900 font-bold px-3 py-1 rounded-full text-sm;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.score-bar {
+  @apply h-3 rounded-full bg-gradient-to-r transition-all duration-700 ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.snowflake {
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  user-select: none;
+  cursor: default;
+  animation-name: snowflake-fall, snowflake-shake;
+  animation-duration: 10s, 3s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  filter: drop-shadow(0 0 10px white);
+}
+
+@keyframes snowflake-fall {
+  0% { top: -10%; }
+  100% { top: 100%; }
+}
+
+@keyframes snowflake-shake {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(80px); }
+}
